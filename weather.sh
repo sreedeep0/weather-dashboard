@@ -2,6 +2,28 @@
 
 source .env
 
+clear
+
+cat << "EOF"
+
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠏⠕⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⢤⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠩⢛⠁⠀⠀⠀⢀⣀⣤⣴⣲⣖⣦⣤⣄⡀⠀⠀⠀⠈⠑⠋⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⡿⣾⢿⡿⣟⣿⣻⣽⣾⢿⣧⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡻⢾⣝⡙⣎⡜⣱⢎⡵⣯⣞⡿⣽⣞⠷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⢳⡝⢣⠾⣽⡞⣽⡽⣫⣟⡳⠽⢫⠗⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⢧⢫⡜⢣⢻⡵⣫⠷⡙⠡⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠈⠓⠥⠂⠀⠀⠘⣌⢳⠸⣌⠧⡝⠅⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠦⡙⢤⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠂⠍⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
+EOF
+
+echo "=================================================="
+echo "              WEATHER DASHBOARD                   "
+echo "=================================================="
+
 echo "Enter city name:"
 read CITY
 
@@ -39,11 +61,15 @@ WEATHER=$(echo $RESPONSE | jq -r '.weather[0].main')
 HUMIDITY=$(echo $RESPONSE | jq -r '.main.humidity')
 WIND=$(echo $RESPONSE | jq -r '.wind.speed')
 
-echo "--------------------------"
-echo "Weather Dashboard"
-echo "--------------------------"
-echo "City: $CITY_NAME"
-echo "Temperature: $TEMP$SYMBOL"
-echo "Condition: $WEATHER"
-echo "Humidity: $HUMIDITY%"
-echo "Wind Speed: $WIND"
+echo
+echo "=================================================="
+echo "                 WEATHER REPORT                   "
+echo "=================================================="
+
+echo "City        : $CITY_NAME"
+echo "Temperature : $TEMP$SYMBOL"
+echo "Condition   : $WEATHER"
+echo "Humidity    : $HUMIDITY%"
+echo "Wind Speed  : $WIND"
+
+echo "=================================================="
