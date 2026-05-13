@@ -1,6 +1,6 @@
 #!/bin/bash
 
-API_KEY="your_api_key"
+source .env
 
 echo "Enter city name:"
 read CITY
