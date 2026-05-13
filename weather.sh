@@ -2,8 +2,17 @@
 
 source .env
 
-clear
+# Colors
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+CYAN='\033[1;36m'
+BLUE='\033[1;34m'
+YELLOW='\033[1;33m'
+MAGENTA='\033[1;35m'
+WHITE='\033[1;37m'
+NC='\033[0m'
 
+echo -e "${CYAN}"
 cat << "EOF"
 
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -20,11 +29,11 @@ cat << "EOF"
 
 EOF
 
-echo "=================================================="
-echo "              WEATHER DASHBOARD                   "
-echo "=================================================="
+echo -e "${BLUE}==================================================${NC}"
+echo -e "${YELLOW}              WEATHER DASHBOARD                   ${NC}"
+echo -e "${BLUE}==================================================${NC}"
 
-echo "Enter city name:"
+echo -e "${GREEN}Enter city name:${NC}"
 read CITY
 
 CHECK_URL="https://api.openweathermap.org/data/2.5/weather?q=${CITY}&appid=${API_KEY}"
@@ -34,11 +43,11 @@ CHECK_RESPONSE=$(curl -s "$CHECK_URL")
 ERROR_CHECK=$(echo $CHECK_RESPONSE | jq -r '.cod')
 
 if [ "$ERROR_CHECK" != "200" ]; then
-    echo "Invalid city name. Please enter a valid city."
+    echo -e "${RED}Invalid city name. Please enter a valid city.${NC}"
     exit 1
 fi
 
-echo "Choose unit:"
+echo -e "${MAGENTA}Choose unit:${NC}"
 echo "1. Celsius"
 echo "2. Fahrenheit"
 read UNIT_CHOICE
@@ -62,14 +71,14 @@ HUMIDITY=$(echo $RESPONSE | jq -r '.main.humidity')
 WIND=$(echo $RESPONSE | jq -r '.wind.speed')
 
 echo
-echo "=================================================="
-echo "                 WEATHER REPORT                   "
-echo "=================================================="
+echo -e "${BLUE}==================================================${NC}"
+echo -e "${CYAN}                 WEATHER REPORT                   ${NC}"
+echo -e "${BLUE}==================================================${NC}"
 
-echo "City        : $CITY_NAME"
-echo "Temperature : $TEMP$SYMBOL"
-echo "Condition   : $WEATHER"
-echo "Humidity    : $HUMIDITY%"
-echo "Wind Speed  : $WIND"
+echo -e "${WHITE}City        : ${GREEN}$CITY_NAME${NC}"
+echo -e "${WHITE}Temperature : ${YELLOW}$TEMP$SYMBOL${NC}"
+echo -e "${WHITE}Condition   : ${CYAN}$WEATHER${NC}"
+echo -e "${WHITE}Humidity    : ${MAGENTA}$HUMIDITY%${NC}"
+echo -e "${WHITE}Wind Speed  : ${GREEN}$WIND${NC}"
 
-echo "=================================================="
+echo -e "${BLUE}==================================================${NC}"
