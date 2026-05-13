@@ -5,6 +5,17 @@ source .env
 echo "Enter city name:"
 read CITY
 
+CHECK_URL="https://api.openweathermap.org/data/2.5/weather?q=${CITY}&appid=${API_KEY}"
+
+CHECK_RESPONSE=$(curl -s "$CHECK_URL")
+
+ERROR_CHECK=$(echo $CHECK_RESPONSE | jq -r '.cod')
+
+if [ "$ERROR_CHECK" != "200" ]; then
+    echo "Invalid city name. Please enter a valid city."
+    exit 1
+fi
+
 echo "Choose unit:"
 echo "1. Celsius"
 echo "2. Fahrenheit"
