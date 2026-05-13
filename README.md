@@ -102,7 +102,7 @@ This project demonstrates:
 
 ---
 
-## Author
+## Authors
 
-Sreedeep
-Siddhu
+- Sreedeep
+- Siddhu
